@@ -10,7 +10,7 @@ module RenaultZE
         "https://www.services.renault-ze.com/api/user/login", 
         body: {username: @username, password: @password}.to_json
       )
-      content = JSON.parse response
+      content = JSON.parse response.body
       return {
         token: content["token"],
         vin: content["user"]["vehicle_details"]["VIN"]
@@ -23,7 +23,7 @@ module RenaultZE
         headers: {"Authorization": "Bearer #{creds["token"]}"}
       )
 
-      result = JSON.parse response
+      result = JSON.parse response.body
       result["last_update"] = result["last_update"] / 1000
       return result
     end
