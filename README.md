@@ -1,8 +1,12 @@
 # RenaultZeAgent
 
-Welcome to your new agent gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/huginn_renault_ze_agent`. To experiment with that code, run `bin/console` for an interactive prompt.
+[![Gem Version](https://badge.fury.io/rb/huginn_renault_ze_agent.svg)](https://badge.fury.io/rb/huginn_renault_ze_agent)
 
-TODO: Delete this and the text above, and describe your gem
+The Renault ZE Battery Agent provides events on a scheduled basis for the Renault ZE Connect API,
+providing battery status for a ZE vehicle.
+
+You can use this for example to remind yourself to plug in your vehicle if it's below a certain
+charge level, or to create a history of your vehicle's battery usage and remaining range.
 
 ## Installation
 
@@ -22,7 +26,17 @@ And then execute:
 
 ## Usage
 
-TODO: Write usage instructions here
+It emits events such as:
+
+```json
+{
+  "charge_level": 40, 
+  "charging": false, 
+  "last_update": 1554572276, 
+  "plugged": false,
+  "remaining_range": 115.0
+}
+```
 
 ## Development
 
@@ -40,7 +54,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/huginn_renault_ze_agent/fork )
+1. Fork it ( https://github.com/nighthawk/huginn_renault_ze_agent/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

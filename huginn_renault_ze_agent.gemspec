@@ -8,8 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Adrian Schoenig"]
   spec.email         = ["adrian.schoenig@gmail.com"]
 
-  spec.summary       = %q{Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{Write a longer description or delete this line.}
+  spec.summary       = %q{Huginn agent that provides battery status of Renault ZE vehicles}
 
   spec.homepage      = "https://github.com/nighthawk/huginn_renault_ze_agent"
 
@@ -21,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = Dir['spec/**/*.rb'].reject { |f| f[%r{^spec/huginn}] }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.17.3"
+  spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
 
   spec.add_runtime_dependency "huginn_agent"
