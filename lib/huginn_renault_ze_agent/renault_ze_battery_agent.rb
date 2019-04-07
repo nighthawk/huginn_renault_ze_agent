@@ -1,5 +1,7 @@
 module Agents
   class RenaultZeBatteryAgent < Agent
+    include FormConfigurable
+    
     default_schedule 'every_5h'
 
     cannot_receive_events!
