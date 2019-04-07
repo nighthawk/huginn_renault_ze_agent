@@ -55,7 +55,7 @@ module Agents
       begin
         content = service.get_battery(service.login())
       rescue
-        error("Could not fetch battery level: " + $!)
+        error("Could not fetch battery level: #{$!}")
         raise
       end
 
