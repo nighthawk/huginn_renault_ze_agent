@@ -11,7 +11,7 @@ module RenaultZE
         headers: {"Content-Type": "application/json"}, 
         body: {username: @username, password: @password}.to_json
       )
-      raise 'Unexpected response code: #{response}' unless response.code == 200
+      raise "Login - Unexpected response code: #{response}" unless response.code == 200
       
       content = JSON.parse response.body
       return {
@@ -21,14 +21,14 @@ module RenaultZE
     end
 
     def get_battery(creds)
-      raise 'Missing token in input: #{creds}' if creds[:token].nil?
-      raise 'Missing VIN in input: #{creds}' if creds[:vin].nil?
+      raise "Battery - Missing token in input: #{creds}" if creds[:token].nil?
+      raise "Battery - Missing VIN in input: #{creds}" if creds[:vin].nil?
 
       response = HTTParty.get(
         "https://www.services.renault-ze.com/api/vehicle/#{creds[:vin]}/battery",
         headers: {"Authorization": "Bearer #{creds[:token]}"}
       )
-      raise 'Unexpected response code: #{response}' unless response.code == 200
+      raise "Battery - Unexpected response code: #{response}" unless response.code == 200
 
       result = JSON.parse response.body
       unless result["last_update"].nil?
