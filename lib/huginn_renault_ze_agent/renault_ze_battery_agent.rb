@@ -16,16 +16,14 @@ module Agents
     event_description <<-MD
       Events look like this:
 
-      ```json
-      {
-        "charge_level": 40, 
-        "charging": false, 
-        "plugged": false,
-        "remaining_range": 115.0,
-        "last_update": 1554572276, 
-        "last_update_hours_ago": 5.12
-      }
-      ```
+          {
+            "charge_level": 40, 
+            "charging": false, 
+            "plugged": false,
+            "remaining_range": 115.0,
+            "last_update": 1554572276, 
+            "last_update_hours_ago": 5.12
+          }
     MD
 
     def default_options
