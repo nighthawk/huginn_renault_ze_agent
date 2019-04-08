@@ -50,6 +50,9 @@ module Agents
     def check
       username = interpolated["username"].present? ? interpolated["username"] : credential("renault_ze_username")
       password = interpolated["password"].present? ? interpolated["password"] : credential("renault_ze_password")
+      redacted_password = "password".size.times.map { "•" }.join
+      log("Logging in #{username} with #{redacted_password}.")
+
       service = RenaultZE::Client.new(username, password)
 
       begin
