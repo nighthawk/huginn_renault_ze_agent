@@ -1,13 +1,14 @@
 module RenaultZE
   class Client
+    API_BASE_URL = 'https://www.services.renault-ze.com/api/'
+
     def initialize(username, password)
       @username = username
       @password = password
     end
 
     def login
-      response = HTTParty.post(
-        "https://www.services.renault-ze.com/api/user/login",
+      response = HTTParty.post(API_BASE_URL + "user/login",
         headers: {"Content-Type": "application/json"}, 
         body: {username: @username, password: @password}.to_json
       )
@@ -24,8 +25,7 @@ module RenaultZE
       raise "Battery - Missing token in input: #{creds}" if creds[:token].nil?
       raise "Battery - Missing VIN in input: #{creds}" if creds[:vin].nil?
 
-      response = HTTParty.get(
-        "https://www.services.renault-ze.com/api/vehicle/#{creds[:vin]}/battery",
+      response = HTTParty.get(API_BASE_URL + "/vehicle/#{creds[:vin]}/battery",
         headers: {"Authorization": "Bearer #{creds[:token]}"}
       )
       raise "Battery - Unexpected response code: #{response}" unless response.code == 200
