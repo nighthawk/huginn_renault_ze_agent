@@ -8,11 +8,7 @@ module RenaultZE
     def login
       response = HTTParty.post(
         "https://www.services.renault-ze.com/api/user/login",
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-          "User-Agent": "Huginn/2019"
-        }, 
+        headers: {"Content-Type": "application/json"}, 
         body: {username: @username, password: @password}.to_json
       )
       raise "Login - Unexpected response code: #{response}" unless response.code == 200
@@ -30,11 +26,7 @@ module RenaultZE
 
       response = HTTParty.get(
         "https://www.services.renault-ze.com/api/vehicle/#{creds[:vin]}/battery",
-        headers: {
-          "Accept": "application/json",
-          "Authorization": "Bearer #{creds[:token]}",
-          "User-Agent": "Huginn/2019"
-        }
+        headers: {"Authorization": "Bearer #{creds[:token]}"}
       )
       raise "Battery - Unexpected response code: #{response}" unless response.code == 200
 

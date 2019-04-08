@@ -50,7 +50,7 @@ module Agents
     def check
       username = interpolated["username"].present? ? interpolated["username"] : credential("renault_ze_username")
       password = interpolated["password"].present? ? interpolated["password"] : credential("renault_ze_password")
-      redacted_password = "password".size.times.map { "•" }.join
+      redacted_password = password.size.times.map { "•" }.join
       log("Logging in #{username} with #{redacted_password}.")
 
       service = RenaultZE::Client.new(username, password)
@@ -59,7 +59,6 @@ module Agents
         content = service.get_battery(service.login())
       rescue
         error("Could not fetch battery level: #{$!}")
-        raise
       end
 
       if memory["last_update"] != content["last_update"]
