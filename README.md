@@ -1,6 +1,8 @@
 # RenaultZeAgent
 
 [![Gem Version](https://badge.fury.io/rb/huginn_renault_ze_agent.svg)](https://badge.fury.io/rb/huginn_renault_ze_agent)
+[![Build Status](https://travis-ci.org/nighthawk/huginn_renault_ze_agent.svg?branch=master)](https://travis-ci.org/nighthawk/huginn_renault_ze_agent)
+
 
 The Renault ZE Battery Agent provides events on a scheduled basis for the Renault ZE Connect API,
 providing battery status for a ZE vehicle.
