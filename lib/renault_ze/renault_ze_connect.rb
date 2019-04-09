@@ -25,7 +25,7 @@ module RenaultZE
       raise "Battery - Missing token in input: #{creds}" if creds[:token].nil?
       raise "Battery - Missing VIN in input: #{creds}" if creds[:vin].nil?
 
-      response = HTTParty.get(API_BASE_URL + "/vehicle/#{creds[:vin]}/battery",
+      response = HTTParty.get(API_BASE_URL + "vehicle/#{creds[:vin]}/battery",
         headers: {"Authorization": "Bearer #{creds[:token]}"}
       )
       raise "Battery - Unexpected response code: #{response}" unless response.code == 200
